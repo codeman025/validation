@@ -16,12 +16,16 @@ function form1(){
 }
 function form2(){
     //validates only the second 5 items
-
+    let bananas = document.getElementById("bananas");
+    let weekday = document.getElementById("weekday");
+    let weekday = document.getElementById("phone");
+    let phone = document.getElementById("phone");
+    let painLevel = document.getElementById("painLevel");
     if((bananas.numeric || bananas.value==="") && weekday.required && phone.req && phone.numberic && phone.required_size(this, 10,10)
-     && alphaID.required && alphaID.required_size(this, 5, 5) && (painLevel.numeric || painLevel.required_size(this, 1, 1) || painLevel.value==="") == true)
-    validate the button
-    else {
-        validate = false?
+     && alphaID.required && alphaID.required_size(this, 5, 5) && (painLevel.numeric || painLevel.required_size(this, 1, 1) || painLevel.value==="") == true){
+   // validate the button
+     }else {
+     //   validate = false?
     }
 }
 
