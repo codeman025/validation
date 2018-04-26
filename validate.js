@@ -16,8 +16,10 @@ function form1(){
 }
 function form2(){
     //validates only the second 5 items
-    if(bananas && weekday && phone && alphaID && painLevel == true)
-    validate this form
+
+    if((bananas.numeric || bananas.value==="") && weekday.required && phone.req && phone.numberic && phone.required_size(this, 10,10)
+     && alphaID.required && alphaID.required_size(this, 5, 5) && (painLevel.numeric || painLevel.required_size(this, 1, 1) || painLevel.value==="") == true)
+    validate the button
     else {
         validate = false?
     }
@@ -25,10 +27,10 @@ function form2(){
 
 function required_size(field, min, max){
     let item = document.getElementById("field").value // sets item to the value of whatever field i am working with;
-    if(item.length < min){
+    if(item.length <= min){
         alert("you entered to few characters");
         return false;
-    } else if(item.length > max){
+    } else if(item.length >= max){
         alert("you entered to many characters")
         return false;
     } 
@@ -40,26 +42,38 @@ function required_size(field, min, max){
 function numeric(field){
     let item = document.getElementById("field").value
     //use REGEX for a item.length amount of characters
-    alert("contains invalid characters");
+    ^\d{item.length}
+    document.elementByClass("errors".innerHTML = "<p>Your input was not valid </p>"
     return false;
-    else {
+}else {
         return true;
 }
 function required(field){
     let item = document.getElementById("field").value
     if(item != ''){
-    alert(item +" is a field that you must fill out")
-    return false;}
-    else {
+        document.elementByClass("errors".innerHTML = "<p>You missed a required field: " + item + "</p>"
+    return false;
+    }else {
         return true;
 }
-function not_required(field){
+function not_required(field){//not sure if this is needed"
     let item = document.getElementById("field").value
     if(field == ""){
     return true
     } else {
+        document.elementByClass("errors".innerHTML = "<p>Today's date is " + d + "</p>"
     return false
         //no idea how to handle this one, posible use an or statement?
     }
 }
 //do i need to make a function that vaidates each field?
+function regex(){}
+if(zipcode.value == ^\d{5} ){
+    return true
+}else{
+    return false
+}
+}
+this.parent
+
+// 
