@@ -19,7 +19,7 @@ function form2(){
     if(bananas && weekday && phone && alphaID && painLevel == true)
     validate this form
     else {
-        display error messages
+        validate = false?
     }
 }
 
@@ -62,3 +62,4 @@ function not_required(field){
         //no idea how to handle this one, posible use an or statement?
     }
 }
+//do i need to make a function that vaidates each field?
