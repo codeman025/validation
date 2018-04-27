@@ -2,39 +2,51 @@ window.onload = function test()
 {
     let x = document.getElementsByClassName("errors");
     x[0].innerHTML = "Hello World!";
-    document.x[0].appendChild(paragraph);
     x[1].innerHTML = "second world problems!";
+    let form1 = x[0];
+    let form2 = x[1];
     console.log(document.getElementById('firstname').value);
    
 }
 //let x = document.getElementById("myList").firstChild.innerHTML; //gets
 
 
-let required_size = (field, min, max){
-    let item = document.getElementById("field").value // sets item to the value of whatever field i am working with;
-    if(item.length <= min){
-        alert("you entered to few characters");
+function required_size(field, maxlength, index){
+    let item = document.getElementById(field).value // sets item to the value of whatever field i am working with;
+    if(item.length <= maxlength){
+        document.getElementsByClassName("errors")[index].textContent="This needs to be" + maxlength;
         return false;
-    } else if(item.length >= max){
-        alert("you entered to many characters")
-        return false;
-    } 
-
-    else {
+    } else {
             return true;
         }
     }
-let numeric = (field){
-    let item = document.getElementById("field").value
-    if(item == /^\d+$/.test(val)){
-    document.elementByClass("errors").innerHTML = "<p>Your input was not valid </p>";
+function numeric (field,index){
+    let item = document.getElementById(field).value;
+    if(item == isNaN(field)){
+        document.getElementsByClassName("errors")[index].textContent="This needs to be a number";
+        return false;
+    }else {
+        return true;
+    }
+}
+function required(field,index){
+    let item = document.getElementById(field).value
+    if(item != ''){
+        document.getElementsByClassName("errors")[index].textContent="This needs to be filled out";
     return false;
-}else {
+    }else {
         return true;
 }
+function not_required(field,index){//not sure if this is needed"
+    let item = document.getElementById(field).value;
+    if(field == ""){
+        return true;
+    } else {
+        return false;
+        //no idea how to handle this one, posible use an or statement?
+    }
 }
-
-
+}
 //gets all elements.. need to break this up into the first 4 and second 5
 
 
@@ -71,16 +83,4 @@ function form2(){
      //   validate = false?
     }
 }
-
-
-//do i need to make a function that vaidates each field?
-function regex(){}
-if(zipcode.value == ^\d{5} ){
-    return true
-} else{
-    return false
-}
-}
-this.parent
-
-/*/ 
+*/ 
