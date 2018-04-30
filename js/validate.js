@@ -1,15 +1,51 @@
+const validateReq = (event)=>{
+	/*let returnbool = true
+	let targets = document.getElementsByClassName('required');
+	for(let i=0; i < targets.length; i++){
+	    if(target[i].getParent() == this.getParent){
+	    if(target[i].value.length < 0){
+		isValid = false;
+		append 
+    }*/
+    console.log('stuff');
+    event.preventDefault();
+};
+
 window.onload = function test()
 {
+
+    let forms = document.getElementsByTagName("form");
+    let aForms = Array.from(forms);
+    aForms.forEach(function(myForm){
+        if(myForm.addEventListener){
+            myForm.addEventListener("submit", validateReq, false);  //Modern browsers
+        }else if(myForm.attachEvent){
+            myForm.attachEvent('onsubmit', validateReq);            //Old IE
+        }
+    });
+
+
+    /*document.body.addEventListener("click", validateReq());
     let x = document.getElementsByClassName("errors");
     x[0].innerHTML = "Hello World!";
     x[1].innerHTML = "second world problems!";
     let form1 = x[0];
     let form2 = x[1];
-    console.log(document.getElementById('firstname').value);
-   
+    //console.log(document.getElementById('firstname').value);
+    //console.log(document.getElementById("sumbitbutton")[0].value);
+    x.innerHTML = required_size(12345, 5, 1);
+*/   
 }
-//let x = document.getElementById("myList").firstChild.innerHTML; //gets
 
+/*
+compare the parents of the buttons and the element id's to make sure i am appending my error messages to the right div element
+*/
+
+
+/*/let x = document.getElementById("myList").firstChild.innerHTML; //gets
+document.getElementById("submitBtn").index[1].addEventListener("click", function(){
+    document.getElementById("demo").innerHTML = "Hello World";
+});*/
 
 function required_size(field, maxlength, index){
     let item = document.getElementById(field).value // sets item to the value of whatever field i am working with;
@@ -46,7 +82,7 @@ function not_required(field,index){//not sure if this is needed"
         //no idea how to handle this one, posible use an or statement?
     }
 }
-}
+};
 //gets all elements.. need to break this up into the first 4 and second 5
 
 
