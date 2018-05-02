@@ -9,6 +9,12 @@ const validateReq = (event)=>{
     }*/
     console.log('stuff');
     event.preventDefault();
+    let myForm = event.currentTarget;
+    let aRequired = myForm.getElementsByClassName("required");
+    console.log(aRequired);
+    for (i = 0; i < aRequired.length, i++) {
+        
+    }
 };
 
 window.onload = function test()
