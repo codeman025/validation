@@ -8,7 +8,7 @@ windows.onload = () => {
             event.preventDefault(); // stops the sumbit button from validating the page
         }
         }
-    }
+    }console.log('test')
 };
 
 function errors (form) {
@@ -35,6 +35,7 @@ function required (form) {
 };
 
 function required_size (form) {
+    let errorstatements = '';
     let size = document.getElementsByClassName("required_size");
     if(size.length == 0){
         errors(form.parentElement).textField = size + " this field is not the correct size"
@@ -43,12 +44,11 @@ function required_size (form) {
 };
 
 function numeric (form){
+    let errorstatements = '';
     let num = document.getElementsByClassName("numeric");
         if(num == NaN){
-        errors(form.parentElement).textField = num + " this field needs to be numbers"
+            errors(form.parentElement).textField = num + " this field needs to be numbers"
     }
-
-
 };
 // appendchild make an errors arrar, append them?
 /*
