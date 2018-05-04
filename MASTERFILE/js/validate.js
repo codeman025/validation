@@ -1,4 +1,5 @@
-windows.onload = () => {
+window.onload = () => {
+    console.log('test');
     let val = document.getElementsByName("submitBtn");
     for (let i = 0; i <val.length; i++){
     val[i].addEventListener("click") , (event) => {
@@ -8,7 +9,7 @@ windows.onload = () => {
             event.preventDefault(); // stops the sumbit button from validating the page
         }
         }
-    }console.log('test')
+    }
 };
 
 function errors (form) {
