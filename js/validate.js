@@ -1,67 +1,58 @@
-const validateReq = (event)=>{
-	/*let returnbool = true
-	let targets = document.getElementsByClassName('required');
-	for(let i=0; i < targets.length; i++){
-	    if(target[i].getParent() == this.getParent){
-	    if(target[i].value.length < 0){
-		isValid = false;
-		append 
-    }*/
-    console.log('stuff');
-    event.preventDefault();
-    let myForm = event.currentTarget;
-    let aRequired = myForm.getElementsByClassName("required");
-    console.log(aRequired);
-    for (i = 0; i < aRequired.length, i++) {
-        
+window.onload = () => {//loads on start, lambda function
+    let submits = document.getElementsByName("submitBtn");//makes an object of submit buttons
+    for (let i = 0; i < submits.length; i++) {//scaleable for additional forms
+        submits[i].addEventListener("click", (event) => {//adds click event
+            if (validateForm(event) == 0) { // if event is false, then the page can refresh
+                event.submit();
+            }
+            event.preventDefault();//prevents sumbit
+        });
     }
-};
-
-window.onload = function test()
-{
-
-    let forms = document.getElementsByTagName("form");
-    let aForms = Array.from(forms);
-    aForms.forEach(function(myForm){
-        if(myForm.addEventListener){
-            myForm.addEventListener("submit", validateReq, false);  //Modern browsers
-        }else if(myForm.attachEvent){
-            myForm.attachEvent('onsubmit', validateReq);            //Old IE
-        }
-    });
-
-//changes wont push
-    /*document.body.addEventListener("click", validateReq());
-    let x = document.getElementsByClassName("errors");
-    x[0].innerHTML = "Hello World!";
-    x[1].innerHTML = "second world problems!";
-    let form1 = x[0];
-    let form2 = x[1];
-    //console.log(document.getElementById('firstname').value);
-    //console.log(document.getElementById("sumbitbutton")[0].value);
-    x.innerHTML = required_size(12345, 5, 1);
-*/   
 }
 
-/*
-compare the parents of the buttons and the element id's to make sure i am appending my error messages to the right div element
-*/
 
-
-/*/let x = document.getElementById("myList").firstChild.innerHTML; //gets
-document.getElementById("submitBtn").index[1].addEventListener("click", function(){
-    document.getElementById("demo").innerHTML = "Hello World";
-});*/
-
-function required_size(field, maxlength, index){
-    let item = document.getElementById(field).value // sets item to the value of whatever field i am working with;
-    if(item.length <= maxlength){
-        document.getElementsByClassName("errors")[index].textContent="This needs to be" + maxlength;
-        return false;
-    } else {
-            return true;
+function required_size(btn){
+    let size = document.getElementByClassName("required_size"); 
+    a = 0;
+    for(let i = 0; i < size.length; i++){
+        if (size.[i].hasAttribute("maxlength")) {
+            if(size[i].value != ""){
+                let length = size[i].getAttribute("maxlength");
+                if (size[i].value.length != parseInt(length)) {
+                    errors(btn.parentElement).textContent += size[1].name + 
+                    " this field needs "+ length + " characters ";
+                    a++;
+                }
+            }
         }
+        return a; // a is a text off errors
     }
+    
+
+    const requiredSize = (btn) => {
+        let reqSize = btn.getElementsByClassName("required_size");
+        let e = 0;
+        //Loop through array of elements with maxlength attribute.
+        for (let i = 0; i < reqSize.length; i++) {
+            //Check that they have input, then meet specific length.
+            if (reqSize[i].hasAttribute("maxlength")) {
+                if (reqSize[i].value != "") {
+                    let length = reqSize[i].getAttribute("maxlength");
+                    if (reqSize[i].value.length != parseInt(length)) {
+                        errors(btn.parentElement).textContent += reqSize[i].name +
+                            " field requires " + length + " characters! ";
+                        e++;
+                    }
+                }
+            }
+        }
+        return e;
+    }
+    
+    
+
+
+
 function numeric (field,index){
     let item = document.getElementById(field).value;
     if(item == isNaN(field)){
