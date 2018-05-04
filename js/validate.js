@@ -30,7 +30,7 @@ window.onload = function test()
         }
     });
 
-
+//changes wont push
     /*document.body.addEventListener("click", validateReq());
     let x = document.getElementsByClassName("errors");
     x[0].innerHTML = "Hello World!";
