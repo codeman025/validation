@@ -15,6 +15,9 @@ window.onload = () => {
 function errors (form) {
     //make an array of error fields so its scaleable
     let errorArr = document.getElementsByClassName("errors");//makes an array of errors
+    for (let i = 0; i<errorArr.length; i++){
+        
+    }
     //parent - child relation to equal it up
     //append to the current form here??
 
