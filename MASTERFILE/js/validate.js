@@ -2,13 +2,13 @@ window.onload = () => {
     console.log('test');
     let val = document.getElementsByName("submitBtn");
     for (let i = 0; i <val.length; i++){
-    val[i].addEventListener("click") , (event) => {
+    val[i].addEventListener("click" , (event) => {
         if(validateForm(event)== true) {
             event.submit(); // if the event
         } else {
             event.preventDefault(); // stops the sumbit button from validating the page
         }
-        }
+        });
     }
 };
 
@@ -16,7 +16,7 @@ function errors (form) {
     //make an array of error fields so its scaleable
     let errorArr = document.getElementsByClassName("errors");//makes an array of errors
     for (let i = 0; i<errorArr.length; i++){
-
+        
     }
     //parent - child relation to equal it up
     //append to the current form here??
@@ -24,27 +24,29 @@ function errors (form) {
 };
 
 function validateform (form) {
-    errorList = '';
+    let errorList = '';
     let specificForm = event.target.parentElement;
+    
 
  
 };
 function required (form) {
-    errorList = '';
+    let errorList = '';
     let req = document.getElementsByClassName("required");
     for(let i = 0; i < req.length; i++){
         if(req[i]==""){
             errors(form.parentElement).textField = req + " is a required field";
+            event.preventDefault;
         }
     }
     return errorList;
 };
 
 function required_size (form) {
-    errorList = '';
-    let errorstatements = '';
+    let errorList = '';
     let size = document.getElementsByClassName("required_size");
     if(size.length == 0){
+        event.preventDefault();
         errors(form.parentElement).textField = size + " this field is not the correct size"
     }
     return errorList;
@@ -52,10 +54,10 @@ function required_size (form) {
 };
 
 function numeric (form){
-    errorList = '';
-    let errorstatements = '';
+    let errorList = '';
     let num = document.getElementsByClassName("numeric");
         if(num == NaN){
+            event.preventDefault();
             errors(form.parentElement).textField = num + " this field needs to be numbers"
     }
     return errorList;
