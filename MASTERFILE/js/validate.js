@@ -16,7 +16,7 @@ function errors (form) {
     //make an array of error fields so its scaleable
     let errorArr = document.getElementsByClassName("errors");//makes an array of errors
     for (let i = 0; i<errorArr.length; i++){
-        
+
     }
     //parent - child relation to equal it up
     //append to the current form here??
@@ -24,8 +24,12 @@ function errors (form) {
 };
 
 function validateform (form) {
-    let errorList = '';
+    let errorList = '';//is this even where I want to add my errors?
     let specificForm = event.target.parentElement;
+    let form = document.getElementsByClassName();//will need to get form specific array of inputs
+    for(let i = 0; i < form.length; i++){//run all required functions, currently isn't form specific
+        
+    }
     
 
  
