@@ -16,7 +16,7 @@ function errors (form) {
     //make an array of error fields so its scaleable
     let errorArr = document.getElementsByClassName("errors");//makes an array of errors
     for (let i = 0; i<errorArr.length; i++){
-        
+
     }
     //parent - child relation to equal it up
     //append to the current form here??
@@ -24,35 +24,41 @@ function errors (form) {
 };
 
 function validateform (form) {
+    errorList = '';
     let specificForm = event.target.parentElement;
 
  
 };
 function required (form) {
+    errorList = '';
     let req = document.getElementsByClassName("required");
     for(let i = 0; i < req.length; i++){
         if(req[i]==""){
             errors(form.parentElement).textField = req + " is a required field";
         }
     }
-
+    return errorList;
 };
 
 function required_size (form) {
+    errorList = '';
     let errorstatements = '';
     let size = document.getElementsByClassName("required_size");
     if(size.length == 0){
         errors(form.parentElement).textField = size + " this field is not the correct size"
     }
+    return errorList;
 
 };
 
 function numeric (form){
+    errorList = '';
     let errorstatements = '';
     let num = document.getElementsByClassName("numeric");
         if(num == NaN){
             errors(form.parentElement).textField = num + " this field needs to be numbers"
     }
+    return errorList;
 };
 // appendchild make an errors arrar, append them?
 /*
