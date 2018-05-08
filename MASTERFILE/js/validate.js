@@ -26,33 +26,41 @@ function errors (form) {
 
 function validateForm(form){ 
     let inputs = [].slice.call(form.getElementsByClassName("required_size"));//converts html elments to array
-    console.log(inputs);
+    let errors = [];
     for(let i = 0; i < (inputs.length);i++){
         let input = inputs[i];
-        required_size(input);
+        let newerrors = required_size(input);
+        if(newerrors.length > 0){
+            errors.concat(newerrors);
+        }
     }
+    let errorsdiv = [].slice.call(form.parentElement.getElementsByClassName("errors"));
+    //let family = form.parentElement;
+    console.log(errorsdiv);
+    errorsdiv[0].textContent = errors.join("<br>");
 
    // let btn = event.target.parentElement.parentElement;
    // errors(btn.parentElement).textContent = "";
    // let numErrors = numeric(btn) + required(btn) + required_size(btn);
    // console.log("not populating");
    // return numErrors;
-    return false;
+    return errors.length;
 }
 
 
 function required_size(input){ // gets the maxlength and runs a function that  
-        
+    let errors = [];
+
     if (input.hasAttribute("maxlength")) {
-            if(input.value != ""){
-                let length = input.getAttribute("maxlength");
+
+            if((input.value != "" && input.classList("required"))|| input.value == "" && !input.classList("required")){//if its not blank
+                                let length = input.getAttribute("maxlength");
                 if (input.value.length != parseInt(length)) {
-                    errors(btn.parentElement).textContent += input.name + 
-                    " this field needs "+ length + " characters ";
+                    errors.push("this field requires "+ maxlength);
                 }
             }
         }
-        return a; // a is a text off errors
+        return errors; // a is a text off errors
 }
 function numeric (btn){
     let num = document.getElementByClassName("numeric"); //gets an array called num, iterates through checking it to see if its numeric
