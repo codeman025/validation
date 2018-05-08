@@ -73,10 +73,3 @@ function numeric (form){
     }
     return errorList;
 };
-// appendchild make an errors arrar, append them?
-/*
-onload all submit buttons are going to be given 
-an event listener, use a for loop to iterate through those, and an if else statement to prevent the page from refreshing if there are errors
-onclick, if there are errors, print them out in the appropriate form, this is possible by adding text content to the appropriate errors class
-apppend all errror messages to a specific error field in the the errors function
-*/
