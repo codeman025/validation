@@ -1,13 +1,19 @@
 window.onload = () => {//loads on start, lambda function
-    let submits = document.getElementsByName("submitBtn");//makes an object of submit buttons
-    for (let i = 0; i < submits.length; i++) {//scaleable for additional forms
-        submits[i].addEventListener("click", (event) => {//adds click event
-            if (validateForm(event) == true) { // if event is false, then the page can refresh
-                event.submit();
+    let forms = [].slice.call(document.getElementsByTagName("form"));//makes an object of submit buttons
+    for (let i = 0; i < forms.length; i++) {//scaleable for additional forms
+        
+        forms[i].addEventListener("submit", (event) => { 
+            event.preventDefault(); 
+             
+            if (validateForm(event.currentTarget)) { // if event is false, then the page can refresh
+               console.log('Should submit');
             }
-            event.preventDefault();//prevents sumbit
+            else {
+                console.log('Should not submit');
+            }
+            
         });
-    } console.log("whats happening");
+    } 
 } 
 
 function errors (form) {
@@ -18,13 +24,13 @@ function errors (form) {
     }
 }
 
-function validateForm(event){ 
-    let btn = event.target.parentElement.parentElement;
-    errors(btn.parentElement).textContent = "";
-    let numErrors = numeric(btn) + required(btn) + required_size(btn);
-    console.log("not populating");
-    return numErrors;
-    
+function validateForm(form){ 
+   // let btn = event.target.parentElement.parentElement;
+   // errors(btn.parentElement).textContent = "";
+   // let numErrors = numeric(btn) + required(btn) + required_size(btn);
+   // console.log("not populating");
+   // return numErrors;
+    return false;
 }
 
 
