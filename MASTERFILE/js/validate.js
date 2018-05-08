@@ -1,75 +1,82 @@
-window.onload = () => {
-    console.log('test');
-    let val = document.getElementsByName("submitBtn");
-    for (let i = 0; i <val.length; i++){
-    val[i].addEventListener("click" , (event) => {
-        if(validateForm(event)== true) {
-            event.submit(); // if the event
-        } else {
-            event.preventDefault(); // stops the sumbit button from validating the page
-        }
+window.onload = () => {//loads on start, lambda function
+    let forms = [].slice.call(document.getElementsByTagName("form"));//makes an object of submit buttons
+    for (let i = 0; i < forms.length; i++) {//scaleable for additional forms
+        
+        forms[i].addEventListener("submit", (event) => { 
+            event.preventDefault(); 
+             
+            if (validateForm(event.currentTarget)) { // if event is false, then the page can refresh
+               console.log('Should submit');
+            }
+            else {
+                console.log('Should not submit');
+            }
+            
         });
-    }console.log(document.getElementsByClassName());
-};
-/*
+    } 
+} 
+
 function errors (form) {
-    //make an array of error fields so its scaleable
-    let errorArr = document.getElementsByClassName("errors");//makes an array of errors
-    for (let i = 0; i<errorArr.length; i++){
-
-    }
-    //parent - child relation to equal it up
-    //append to the current form here??
-
-};
-*/
-/* function validateform (form) {//specific set of form inputs
-    let specificForm = event.target.parentElement;
-    //
-    let inputs = form.getElementsByClassName();//will need to get form specific array of inputs
-    for(let i = 0; i < inputs.length; i++){//run all required functions, currently isn't form specific
-        if(inputs[i].classList("required")){
-            input[i].required;
-        }else if(inputs[i].classList("required_size")){
-            input[i].required_size;
-    }else if(inputs[i].classList("numeric")){
-        input[i].required;
-    }else{
-        //so far..only goes through one class condition :(
-    }
-    }    
-};*/
-function required (form) {
-    let errorList = '';
-    let req = document.getElementsByClassName("required");//with parent class the same as the submit button
-    if (req.parentElement() == form.parentElement){
-    for(let i = 0; i < req.length; i++){
-        if(req[i]==""){
-            errors(form.parentElement).textField = req + " is a required field";
-            event.preventDefault;
+    for (let a = 0; a < document.getElementsByClassName("errors").length; a++) {// gets the elements named errors (currently 2)
+        if (document.getElementsByClassName("errors")[a].parentElement === form) { //gets the parent to differentiate the forms
+            return document.getElementsByClassName("errors")[a];//gets the right form
         }
     }
-    return errorList;
 }
-};
 
-function required_size (form) {
-    let errorList = '';
-    let size = document.getElementsByClassName("required_size");
-    if(size.length == 0){
-        event.preventDefault();
-        errors(form.parentElement).textField = size + " this field is not the correct size"
+function validateForm(form){ 
+    let inputs = [].slice.call(form.getElementsByClassName("required_size"));//converts html elments to array
+    console.log(inputs);
+    for(let i = 0; i < (inputs.length);i++){
+        let input = inputs[i];
+        required_size(input);
     }
-    return errorList;
 
-};
+   // let btn = event.target.parentElement.parentElement;
+   // errors(btn.parentElement).textContent = "";
+   // let numErrors = numeric(btn) + required(btn) + required_size(btn);
+   // console.log("not populating");
+   // return numErrors;
+    return false;
+}
 
-function numeric (form){
-    let errorList = '';
-    let num = document.getElementsByClassName("numeric");
-        if(num == NaN){
-            event.preventDefault();
-            errors[form.parentElement].textField = num + " this field needs to be numbers"
+
+function required_size(input){ // gets the maxlength and runs a function that  
+        
+    if (input.hasAttribute("maxlength")) {
+            if(input.value != ""){
+                let length = input.getAttribute("maxlength");
+                if (input.value.length != parseInt(length)) {
+                    errors(btn.parentElement).textContent += input.name + 
+                    " this field needs "+ length + " characters ";
+                }
+            }
+        }
+        return a; // a is a text off errors
+}
+function numeric (btn){
+    let num = document.getElementByClassName("numeric"); //gets an array called num, iterates through checking it to see if its numeric
+    a = 0;
+    for(let i = 0; i < num.length; i++){//iterates through the fields that are numeric
+        if (num[i].hasAttribute("numeric")) {
+            if(num[i].value == NaN){//if the value is not a number (nan return this error field)
+                    errors(btn.parentElement).textContent += size[i].name + 
+                    " this field needs to be numbers ";
+                    a++;
+                }
+            }
+        }
+        return a; // a is a text off errors
     }
-    return errorList;
-};
+function required(btn){
+    let req = document.getElementByClassName("required"); 
+    a = 0;
+    for(let i = 0; i < req.length; i++){//iterates through array of required material
+        if(size[i].value != ""){
+            errors(btn.parentElement).textContent += req[i].name + 
+                " this field is required ";
+                a++;
+            }
+        }return a; // a is a text off error
+    }
+    
