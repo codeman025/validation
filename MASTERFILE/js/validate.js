@@ -53,13 +53,16 @@ function required_size(input){ // gets the maxlength and runs a function that
 
     if (input.hasAttribute("maxlength")) {
 
-            if((input.value != "" && input.classList("required"))|| input.value == "" && !input.classList("required")){//if its not blank
-                                let length = input.getAttribute("maxlength");
-                if (input.value.length != parseInt(length)) {
-                    errors.push("this field requires "+ maxlength);
-                }
-            }
+        let isRequired = input.classList.contains("required");
+        let requiredlength = parseInt(input.getAttribute("maxlength"),10);
+
+        if(isRequired && input.value.length != requiredlength) {
+            errors.push("this field requires "+ maxlength);
         }
+        else if(!isRequired && input.value.length != requiredlength && input.value.length > 0) {
+            errors.push("this field requires "+ maxlength);
+        }
+             
         return errors; // a is a text off errors
 }
 function numeric (btn){
